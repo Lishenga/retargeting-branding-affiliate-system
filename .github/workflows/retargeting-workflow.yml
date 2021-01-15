@@ -2,8 +2,6 @@ name: Retargeting and Rebranding docker image to Amazon ECR
 
 on:
   push:
-    paths:
-      - 'retargettingandrebranding/**'  
     branches:
       - main  
 
@@ -34,7 +32,7 @@ jobs:
 
       - name: Maven Package
         run: |
-          cd retargettingandrebranding/retargeting_branding
+          cd retargeting_branding
           mvn -B clean package -DskipTests
 
       - name: Build and tag the image
@@ -42,7 +40,7 @@ jobs:
         run: |
           docker build \
             -t $CONTAINER_IMAGE \
-            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./retargettingandrebranding/retargeting_branding
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./retargeting_branding
           echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE"
 
       - name: Push
@@ -61,7 +59,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: retargettingandrebranding/task-definition.json
+          task-definition: task-definition.json
           container-name: retargetting-rebranding-001
           image: ${{ steps.build-image.outputs.image }}
 
