@@ -9,7 +9,7 @@
                 "logDriver": "awslogs",
                 "secretOptions": null,
                 "options": {
-                    "awslogs-group": "/ecs/retargetingRebranding",
+                    "awslogs-group": "/ecs/retargettingandrebranding",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
