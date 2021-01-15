@@ -1,0 +1,55 @@
+server:
+    port: 8080
+spring:
+    application: 
+        name: affiliate-service
+    datasource:
+        url: jdbc:mysql://3.80.94.45:3306/affiliate_system
+        username: root
+        password: p1r1chon1
+        # url: jdbc:mysql://localhost:3306/authentication_and_authorization?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        # username: root
+        # password: p1r1chon1
+        hikari:
+            connectionTimeout: 20000
+            maximumPoolSize: 5
+    jpa:
+        hibernate:
+            ddl-auto: update
+# server.servlet.context-path=/auth
+
+logging:
+    level:
+        org:
+            springframework: ERROR
+
+
+springdoc:
+    api-docs:
+        path: /api-docs
+    swagger-ui:
+        path: /swagger-ui.html
+
+
+## System Configs
+system-config:
+    token:
+        generator: 5r'YgER_D;*n$=op&8GZ&$;0g#cx|hVhg;M=h{V>)LH$$ejSV+uDS3)"lQRt/?C
+    api:
+        version: 1.0.0
+    email:
+        sender: lanthanionbusiness@gmail.com
+    mailjet:
+        apiKey: 54d1004f4e3555777158b4b0cf1d51a4
+        secretKey: b4447686222e17b409e27ac0c31ce7ad
+        
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka/
+# eureka.instance.preferIpAddress=true 
+# eureka.instance.hostname = authentication-service
+
+## jdjdjdlsdjlk
+

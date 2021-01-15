@@ -1,0 +1,53 @@
+
+version: '3'
+
+services:
+
+    authentication-app:
+        build: ./authentication
+        container_name: authentication-app
+        volumes:
+            - /data/authentication-0.0.1-SNAPSHOT
+        environment:
+            - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
+        expose:
+            - "8081"
+
+    retargeting_branding-app:
+            build: ./retargeting_branding
+            container_name: retargeting_branding-app
+            volumes:
+                - /data/retargeting_branding-0.0.1-SNAPSHOT
+            environment:
+                - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
+            expose:
+                - "8083"
+
+
+    nginx-auth:
+        build: ./nginx/authentication
+        volumes:
+            - /data/authentication-0.0.1-SNAPSHOT
+        ports:
+            - "80:80"
+        depends_on:
+            - authentication-app
+
+    nginx-retarget:
+        build: ./nginx/retargeting_and_branding
+        volumes:
+            - /data/retargeting_branding-0.0.1-SNAPSHOT
+        ports:
+            - "83:83"
+        depends_on:
+            - retargeting_branding-app
+
+
+#             sudo apt-get update
+# sudo apt-get install ruby
+# sudo apt-get install wget
+# cd /home/ubuntu
+# wget https://aws-codedeploy-eu-west-1.s3.eu-west-1.amazonaws.com/latest/install
+# chmod +x ./install
+# sudo ./install auto
+# sudo service codedeploy-agent start

@@ -1,0 +1,50 @@
+image: docker
+
+services: 
+    - docker:dind
+
+stages:
+    - test
+    - deploy
+    - production
+
+authentication-app:
+    stage: test
+    only: 
+        - test
+    tags:
+        - authentication
+    script:
+        - echo run tests in the section
+
+affiliate:
+    stage: deploy
+    only: 
+        - deploy
+    tags:
+        - affiliate
+    script:
+        - cd authentication
+        - mvn clean install
+        - cd ..
+        - cd retargeting_branding
+        - mvn clean install
+        - cd ..
+        - docker-compose up -d --build
+    environment: deploy
+
+retargetting:
+    stage: production
+    only: 
+        - master
+    tags:
+        - retargetting
+    script:
+        - cd authentication
+        - mvn clean install
+        - cd ..
+        - cd retargeting_branding
+        - mvn clean install
+        - cd ..
+        - docker-compose up -d --build 
+    environment: production

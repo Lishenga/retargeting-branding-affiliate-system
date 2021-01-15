@@ -1,0 +1,9 @@
+{
+    "properties": [
+        {
+            "name": "system-config",
+            "type": "package com.authorization.authentication.configs.ApplicationConfig",
+            "description": "token generator"
+        }
+    ]
+}

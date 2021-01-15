@@ -1,0 +1,2711 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Authentication and Authorization API",
+        "description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).For this sample, you can use the api key `special-key` to test the authorization     filters.",
+        "termsOfService": "http://Lanthanion.com",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://springdoc.org"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/api/accesslogs/getallaccesslogs": {
+            "post": {
+                "tags": [
+                    "access-logs-controller"
+                ],
+                "operationId": "getAllAccessLogs",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedAccessLogsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accesslogs/deleteaccesslog": {
+            "delete": {
+                "tags": [
+                    "access-logs-controller"
+                ],
+                "operationId": "deleteAccessLog",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteAccessLogRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accesslogs/getparticularaccesslog": {
+            "post": {
+                "tags": [
+                    "access-logs-controller"
+                ],
+                "operationId": "getParticularAccessLog",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularAccessLogRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralAccessLogsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/address/getalladdresses": {
+            "post": {
+                "tags": [
+                    "address-controller"
+                ],
+                "operationId": "getAllAddresses",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedAddressesResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/address/updateuseraddress": {
+            "put": {
+                "tags": [
+                    "address-controller"
+                ],
+                "operationId": "updateUserAddress",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserAddressRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralAddressResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/address/deleteuseraddress": {
+            "delete": {
+                "tags": [
+                    "address-controller"
+                ],
+                "operationId": "deleteUserAddress",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteUserAddressRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/address/getparticularuseraddress": {
+            "post": {
+                "tags": [
+                    "address-controller"
+                ],
+                "operationId": "getParticularUserAddress",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularUserAddressRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralAddressResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chat/getallchats": {
+            "post": {
+                "tags": [
+                    "chat-controller"
+                ],
+                "operationId": "getAllChats",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedChatsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chat/deletechat": {
+            "delete": {
+                "tags": [
+                    "chat-controller"
+                ],
+                "operationId": "deleteChat",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteChatRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chat/getparticularchat": {
+            "post": {
+                "tags": [
+                    "chat-controller"
+                ],
+                "operationId": "getParticularRole",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularChatRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralChatResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chat/getparticularuserchats": {
+            "post": {
+                "tags": [
+                    "chat-controller"
+                ],
+                "operationId": "getParticularUserChats",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularUserChatsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedChatsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/chat/createchat": {
+            "post": {
+                "tags": [
+                    "chat-controller"
+                ],
+                "operationId": "createChat",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateChatRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clients/createclient": {
+            "post": {
+                "tags": [
+                    "clients-controller"
+                ],
+                "operationId": "createClient",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateClientRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateClientResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clients/updateclient": {
+            "put": {
+                "tags": [
+                    "clients-controller"
+                ],
+                "operationId": "updateClient",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateClientRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateClientResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/messages/getallmessages": {
+            "post": {
+                "tags": [
+                    "messages-controller"
+                ],
+                "operationId": "getAllMessages",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetAllMessagesResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/messages/deletemessage": {
+            "delete": {
+                "tags": [
+                    "messages-controller"
+                ],
+                "operationId": "deleteMessage",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteMessageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/messages/getparticularusermessages": {
+            "post": {
+                "tags": [
+                    "messages-controller"
+                ],
+                "operationId": "getParticularUserMessages",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularUserMessagesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetParticularUserMessagesResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/messages/getparticularchatmessages": {
+            "post": {
+                "tags": [
+                    "messages-controller"
+                ],
+                "operationId": "getParticularChatMessages",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularChatMessagesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetParticularChatMessagesResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/messages/createmessage": {
+            "post": {
+                "tags": [
+                    "messages-controller"
+                ],
+                "operationId": "createMessage",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateMessageRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/createpermission": {
+            "post": {
+                "tags": [
+                    "permissions-controller"
+                ],
+                "operationId": "createPermission",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePermissionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPermissionsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/getallpermissions": {
+            "post": {
+                "tags": [
+                    "permissions-controller"
+                ],
+                "operationId": "getAllRoles",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedPermissionsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/deletepermission": {
+            "delete": {
+                "tags": [
+                    "permissions-controller"
+                ],
+                "operationId": "deletePermission",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeletePermissionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/getparticularpermission": {
+            "post": {
+                "tags": [
+                    "permissions-controller"
+                ],
+                "operationId": "getParticularPermission",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularPermissionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPermissionsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/getparticularrolepermissions": {
+            "post": {
+                "tags": [
+                    "permissions-controller"
+                ],
+                "operationId": "getParticularRolePermissions",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularRolePermissionsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedPermissionsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/updatepermission": {
+            "put": {
+                "tags": [
+                    "permissions-controller"
+                ],
+                "operationId": "updatePermission",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePermissionsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPermissionsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/getparticularrole": {
+            "post": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "getParticularRole_1",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularRoleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetParticularRoleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/createrole": {
+            "post": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "createRole",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateRoleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateRoleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/deleterole": {
+            "delete": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "deleteRoles",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteRoleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/getparticularroleusers": {
+            "post": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "getParticularRoleUsers",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularRoleUsersRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedUsersResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/getparticularuserroles": {
+            "post": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "getParticularUserRoles",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularUserRolesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedRolesResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/updaterole": {
+            "put": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "updateRole",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRoleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetParticularRoleResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/getallroles": {
+            "post": {
+                "tags": [
+                    "roles-controller"
+                ],
+                "operationId": "getAllRoles_1",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralRolesResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/getparticularuser": {
+            "post": {
+                "tags": [
+                    "users-controller"
+                ],
+                "operationId": "getParticularUser",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetParticularUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralUsersResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/getAllUsers": {
+            "post": {
+                "tags": [
+                    "users-controller"
+                ],
+                "operationId": "getAllUsers",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralPagedRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedUsersResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/deleteuser": {
+            "delete": {
+                "tags": [
+                    "users-controller"
+                ],
+                "operationId": "deleteUser",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/getuserbyusertype": {
+            "post": {
+                "tags": [
+                    "users-controller"
+                ],
+                "operationId": "getUsersByUserType",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetUsersByUserTypeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralPagedUsersResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/updateuserdetails": {
+            "put": {
+                "tags": [
+                    "users-controller"
+                ],
+                "operationId": "updateUserDetails",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserDetailsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralUsersResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/resetuserpassword": {
+            "post": {
+                "tags": [
+                    "users-controller"
+                ],
+                "operationId": "resetUserPassword",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetUserPasswordRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneralResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/authenticate": {
+            "post": {
+                "tags": [
+                    "authentication-controller"
+                ],
+                "operationId": "createAuthenticationToken",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "clientSecret",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthenticationResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/authenticateuser": {
+            "post": {
+                "tags": [
+                    "authentication-controller"
+                ],
+                "operationId": "authenticateUser",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "clientSecret",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserAuthenticationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserAuthenticationResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/registeruser": {
+            "post": {
+                "tags": [
+                    "authentication-controller"
+                ],
+                "operationId": "registerUser",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "clientSecret",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deviceIp",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deviceId",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "location",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "browserAgent",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RegisterUserResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GeneralPagedRequest": {
+                "required": [
+                    "isDeleted",
+                    "items",
+                    "page"
+                ],
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "AccessLogs": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "deviceId": {
+                        "type": "string"
+                    },
+                    "deviceIp": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "browserAgent": {
+                        "type": "string"
+                    },
+                    "client": {
+                        "$ref": "#/components/schemas/Clients"
+                    },
+                    "accessToken": {
+                        "$ref": "#/components/schemas/Token"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "Clients": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "clientId": {
+                        "type": "string"
+                    },
+                    "clientSecret": {
+                        "type": "string"
+                    },
+                    "nickName": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "GeneralPagedAccessLogsResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AccessLogs"
+                        }
+                    }
+                }
+            },
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "accesstoken": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "ttl": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "Users": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "isLoggedIn": {
+                        "type": "boolean"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "enum": [
+                            "ADVERTISER",
+                            "AD_OWNER",
+                            "AFFILIATE",
+                            "ADMIN"
+                        ]
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "DeleteAccessLogRequest": {
+                "required": [
+                    "accessLogId"
+                ],
+                "type": "object",
+                "properties": {
+                    "accessLogId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GeneralResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GetParticularAccessLogRequest": {
+                "required": [
+                    "accessLogId"
+                ],
+                "type": "object",
+                "properties": {
+                    "accessLogId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GeneralAccessLogsResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AccessLogs"
+                    }
+                }
+            },
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "GeneralPagedAddressesResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Address"
+                        }
+                    }
+                }
+            },
+            "UpdateUserAddressRequest": {
+                "required": [
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GeneralAddressResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Address"
+                    }
+                }
+            },
+            "DeleteUserAddressRequest": {
+                "required": [
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularUserAddressRequest": {
+                "required": [
+                    "isDeleted",
+                    "user"
+                ],
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Chat": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "GeneralPagedChatsResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Chat"
+                        }
+                    }
+                }
+            },
+            "DeleteChatRequest": {
+                "required": [
+                    "chatId"
+                ],
+                "type": "object",
+                "properties": {
+                    "chatId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularChatRequest": {
+                "required": [
+                    "chatId"
+                ],
+                "type": "object",
+                "properties": {
+                    "chatId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GeneralChatResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Chat"
+                    }
+                }
+            },
+            "GetParticularUserChatsRequest": {
+                "required": [
+                    "isDeleted",
+                    "items",
+                    "page",
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "CreateChatRequest": {
+                "required": [
+                    "initiator",
+                    "userOne",
+                    "userTwo"
+                ],
+                "type": "object",
+                "properties": {
+                    "userOne": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "userTwo": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "initiator": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "CreateClientRequest": {
+                "required": [
+                    "clientId",
+                    "clientSecret"
+                ],
+                "type": "object",
+                "properties": {
+                    "clientId": {
+                        "type": "string"
+                    },
+                    "clientSecret": {
+                        "type": "string"
+                    },
+                    "nickName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateClientResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Clients"
+                    }
+                }
+            },
+            "UpdateClientRequest": {
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "clientId": {
+                        "type": "string"
+                    },
+                    "clientSecret": {
+                        "type": "string"
+                    },
+                    "nickName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GetAllMessagesResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Messages"
+                        }
+                    }
+                }
+            },
+            "Messages": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "readSender": {
+                        "type": "boolean"
+                    },
+                    "readReceiver": {
+                        "type": "boolean"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "DeleteMessageRequest": {
+                "required": [
+                    "messageId"
+                ],
+                "type": "object",
+                "properties": {
+                    "messageId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularUserMessagesRequest": {
+                "required": [
+                    "isDeleted",
+                    "items",
+                    "page",
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "GetParticularUserMessagesResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Messages"
+                        }
+                    }
+                }
+            },
+            "GetParticularChatMessagesRequest": {
+                "required": [
+                    "chat",
+                    "isDeleted",
+                    "items",
+                    "page"
+                ],
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "chat": {
+                        "$ref": "#/components/schemas/Chat"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "GetParticularChatMessagesResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Messages"
+                        }
+                    }
+                }
+            },
+            "CreateMessageRequest": {
+                "required": [
+                    "chatId",
+                    "message",
+                    "readReceiver",
+                    "readSender",
+                    "receiver",
+                    "sender"
+                ],
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "sender": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "receiver": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "readSender": {
+                        "type": "boolean"
+                    },
+                    "readReceiver": {
+                        "type": "boolean"
+                    },
+                    "chatId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "CreatePermissionRequest": {
+                "required": [
+                    "name",
+                    "role"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "$ref": "#/components/schemas/Roles"
+                    }
+                }
+            },
+            "Roles": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "GeneralPermissionsResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Permissions"
+                    }
+                }
+            },
+            "Permissions": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "updatedBy": {
+                        "$ref": "#/components/schemas/Users"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "GeneralPagedPermissionsResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Permissions"
+                        }
+                    }
+                }
+            },
+            "DeletePermissionRequest": {
+                "required": [
+                    "permissionId"
+                ],
+                "type": "object",
+                "properties": {
+                    "permissionId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularPermissionRequest": {
+                "required": [
+                    "permissionId"
+                ],
+                "type": "object",
+                "properties": {
+                    "permissionId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularRolePermissionsRequest": {
+                "required": [
+                    "isDeleted",
+                    "items",
+                    "page",
+                    "roleId"
+                ],
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "UpdatePermissionsRequest": {
+                "required": [
+                    "permissionId",
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "permissionId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularRoleRequest": {
+                "required": [
+                    "roleId"
+                ],
+                "type": "object",
+                "properties": {
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularRoleResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Roles"
+                    }
+                }
+            },
+            "CreateRoleRequest": {
+                "required": [
+                    "createdBy",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "CreateRoleResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Roles"
+                    }
+                }
+            },
+            "DeleteRoleRequest": {
+                "required": [
+                    "roleId"
+                ],
+                "type": "object",
+                "properties": {
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetParticularRoleUsersRequest": {
+                "required": [
+                    "isDeleted",
+                    "items",
+                    "page",
+                    "roleId"
+                ],
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "GeneralPagedUsersResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Users"
+                        }
+                    }
+                }
+            },
+            "GetParticularUserRolesRequest": {
+                "required": [
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GeneralPagedRolesResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Roles"
+                        }
+                    }
+                }
+            },
+            "UpdateRoleRequest": {
+                "required": [
+                    "roleId",
+                    "updatedBy"
+                ],
+                "type": "object",
+                "properties": {
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "updatedBy": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GeneralRolesResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Roles"
+                        }
+                    }
+                }
+            },
+            "GetParticularUserRequest": {
+                "required": [
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GeneralUsersResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Users"
+                    }
+                }
+            },
+            "DeleteUserRequest": {
+                "required": [
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "GetUsersByUserTypeRequest": {
+                "required": [
+                    "isDeleted",
+                    "items",
+                    "page",
+                    "userType"
+                ],
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "isDeleted": {
+                        "type": "boolean"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "enum": [
+                            "ADVERTISER",
+                            "AD_OWNER",
+                            "AFFILIATE",
+                            "ADMIN"
+                        ]
+                    }
+                }
+            },
+            "UpdateUserAddress": {
+                "type": "object",
+                "properties": {
+                    "country": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UpdateUserDetailsRequest": {
+                "required": [
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "enum": [
+                            "ADVERTISER",
+                            "AD_OWNER",
+                            "AFFILIATE",
+                            "ADMIN"
+                        ]
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "updateUserAddress": {
+                        "$ref": "#/components/schemas/UpdateUserAddress"
+                    }
+                }
+            },
+            "ResetUserPasswordRequest": {
+                "required": [
+                    "password",
+                    "userId"
+                ],
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuthenticationResponse": {
+                "type": "object",
+                "properties": {
+                    "jwt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserAuthenticationRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserAuthenticationResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Users"
+                    }
+                }
+            },
+            "RegisterUserRequest": {
+                "required": [
+                    "email",
+                    "firstName",
+                    "lastName",
+                    "password",
+                    "phoneNumber",
+                    "roleId",
+                    "userType"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "roleId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "enum": [
+                            "ADVERTISER",
+                            "AD_OWNER",
+                            "AFFILIATE",
+                            "ADMIN"
+                        ]
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RegisterUserResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "API KEY / API SECRET": {
+                "type": "apiKey",
+                "scheme": "apiKey"
+            }
+        }
+    }
+}
