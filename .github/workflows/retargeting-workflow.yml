@@ -59,8 +59,8 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition.json
-          container-name: retargetting-rebranding-001
+          task-definition: ./retargeting_branding/task-definition.json
+          container-name: retargettingandrebranding
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
