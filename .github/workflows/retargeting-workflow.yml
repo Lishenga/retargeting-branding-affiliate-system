@@ -25,10 +25,10 @@ jobs:
         run: |
           $( aws ecr get-login --no-include-email )
 
-      - name: Set up JDK 8 
+      - name: Set up JDK 14 
         uses: actions/setup-java@v1  
         with:
-          java-version: 8
+          java-version: 14
 
       - name: Maven Package
         run: |
