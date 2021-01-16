@@ -67,6 +67,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: retargettingRebranding
+          service: retargettingandrebranding
           cluster: retargettingandrebranding
           # wait-for-service-stability: true
