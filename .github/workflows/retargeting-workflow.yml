@@ -72,7 +72,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
+      - name: Fill in the new retargettingandrebranding image ID in the Amazon ECS task definition
         id: retargettingandrebranding-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
@@ -80,7 +80,7 @@ jobs:
           container-name: retargettingandrebranding
           image: ${{ steps.build-retargettingandrebranding-image.outputs.image }}
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
+      - name: Fill in the new authenticationandauthorization image ID in the Amazon ECS task definition
         id: authenticationandauthorization-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
@@ -88,14 +88,14 @@ jobs:
           container-name: authenticationandauthorization
           image: ${{ steps.build-authenticationandauthorization-image.outputs.image }}
 
-      - name: Deploy Amazon ECS task definition
+      - name: Deploy Amazon retargettingandrebranding ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.retargettingandrebranding-task-def.outputs.task-definition }}
           service: retargettingandrebranding
           cluster: retargettingandrebranding
           # wait-for-service-stability: true
-      - name: Deploy Amazon ECS task definition
+      - name: Deploy Amazon authenticationandauthorization ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.authenticationandauthorization-task-def.outputs.task-definition }}
