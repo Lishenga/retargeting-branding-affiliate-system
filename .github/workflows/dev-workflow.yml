@@ -40,6 +40,9 @@ jobs:
           cd authentication
           mvn -B clean package -DskipTests
           cd ..
+          cd affiliate
+          mvn -B clean package -DskipTests
+          cd ..
 
       - name: Build and tag the retargettingandrebranding-image
         id: build-retargettingandrebranding-image
@@ -57,6 +60,14 @@ jobs:
             -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE ./authentication
           echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE"
 
+      - name: Build and tag the affiliatesystem-image
+        id: build-affiliatesystem-image
+        run: |
+          docker build \
+            -t $AFFILIATE_SYSTEM_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AFFILIATE_SYSTEM_CONTAINER_IMAGE ./affiliate
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AFFILIATE_SYSTEM_CONTAINER_IMAGE"
+
       - name: Push
         run: |
           cd retargeting_branding
@@ -64,6 +75,9 @@ jobs:
           cd ..
           cd authentication
           docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE
+          cd ..
+          cd affiliate
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AFFILIATE_SYSTEM_CONTAINER_IMAGE
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -88,6 +102,14 @@ jobs:
           container-name: authenticationAuthorization
           image: ${{ steps.build-authenticationandauthorization-image.outputs.image }}
 
+      - name: Fill in the new affiliatesystem image ID in the Amazon ECS task definition
+        id: affiliate-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ./affiliate/task-definition.json
+          container-name: affiliatesystem
+          image: ${{ steps.build-affiliate-image.outputs.image }}
+
       - name: Deploy Amazon retargettingandrebranding ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
@@ -100,4 +122,11 @@ jobs:
         with:
           task-definition: ${{ steps.authenticationandauthorization-task-def.outputs.task-definition }}
           service: authenticationAuth
+          cluster: retargettingandrebranding
+
+      - name: Deploy Amazon affiliatesystem ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.affiliatesystem-task-def.outputs.task-definition }}
+          service: affiliatesystem
           cluster: retargettingandrebranding
