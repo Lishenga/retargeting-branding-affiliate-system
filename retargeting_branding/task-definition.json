@@ -53,7 +53,7 @@
             "dockerLabels": null,
             "systemControls": null,
             "privileged": null,
-            "name": "retargettingRebranding"
+            "name": "retargettingandrebranding"
         }
     ],
     "placementConstraints": [],
@@ -123,7 +123,7 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "networkMode": "host",
+    "networkMode": "bridge",
     "cpu": null,
     "revision": 3,
     "status": "ACTIVE",
