@@ -85,7 +85,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ./authentication/task-definition.json
-          container-name: authenticationandauthorization
+          container-name: authenticationAuthorization
           image: ${{ steps.build-authenticationandauthorization-image.outputs.image }}
 
       - name: Deploy Amazon retargettingandrebranding ECS task definition
