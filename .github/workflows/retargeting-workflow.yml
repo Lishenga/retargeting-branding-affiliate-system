@@ -11,7 +11,9 @@ env:
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  CONTAINER_IMAGE: retargettingandrebranding:latest  
+  RETARGETING_REBRANDING_CONTAINER_IMAGE: retargettingandrebranding:latest  
+  AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE: authenticationandauthorization:latest 
+  AFFILIATE_SYSTEM_CONTAINER_IMAGE: affiliatesystem:latest 
 
 jobs:
   build-and-push:
@@ -34,19 +36,34 @@ jobs:
         run: |
           cd retargeting_branding
           mvn -B clean package -DskipTests
+          cd ..
+          cd authentication
+          mvn -B clean package -DskipTests
+          cd ..
 
-      - name: Build and tag the image
-        id: build-image
+      - name: Build and tag the retargettingandrebranding-image
+        id: build-retargettingandrebranding-image
         run: |
           docker build \
-            -t $CONTAINER_IMAGE \
-            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./retargeting_branding
-          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE"
+            -t $RETARGETING_REBRANDING_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$RETARGETING_REBRANDING_CONTAINER_IMAGE ./retargeting_branding
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$RETARGETING_REBRANDING_CONTAINER_IMAGE"
+
+      - name: Build and tag the authenticationandauthorization-image
+        id: build-authenticationandauthorization-image
+        run: |
+          docker build \
+            -t $AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE ./authentication
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE"
 
       - name: Push
         run: |
           cd retargeting_branding
-          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$RETARGETING_REBRANDING_CONTAINER_IMAGE
+          cd ..
+          cd authentication
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -56,17 +73,31 @@ jobs:
           aws-region: us-east-1
 
       - name: Fill in the new image ID in the Amazon ECS task definition
-        id: task-def
+        id: retargettingandrebranding-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ./retargeting_branding/task-definition.json
           container-name: retargettingandrebranding
-          image: ${{ steps.build-image.outputs.image }}
+          image: ${{ steps.build-retargettingandrebranding-image.outputs.image }}
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: authenticationandauthorization-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ./authentication/task-definition.json
+          container-name: authenticationandauthorization
+          image: ${{ steps.build-authenticationandauthorization-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          task-definition: ${{ steps.retargettingandrebranding-task-def.outputs.task-definition }}
           service: retargettingandrebranding
           cluster: retargettingandrebranding
           # wait-for-service-stability: true
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.authenticationandauthorization-task-def.outputs.task-definition }}
+          service: authenticationAuth
+          cluster: retargettingandrebranding
