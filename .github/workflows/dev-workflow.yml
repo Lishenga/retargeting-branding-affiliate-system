@@ -108,7 +108,7 @@ jobs:
         with:
           task-definition: ./affiliate/task-definition.json
           container-name: affiliatesystem
-          image: ${{ steps.build-affiliate-image.outputs.image }}
+          image: ${{ steps.build-affiliatesystem-image.outputs.image }}
 
       - name: Deploy Amazon retargettingandrebranding ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
