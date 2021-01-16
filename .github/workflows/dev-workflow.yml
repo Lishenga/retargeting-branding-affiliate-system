@@ -103,7 +103,7 @@ jobs:
           image: ${{ steps.build-authenticationandauthorization-image.outputs.image }}
 
       - name: Fill in the new affiliatesystem image ID in the Amazon ECS task definition
-        id: affiliate-task-def
+        id: affiliatesystem-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ./affiliate/task-definition.json
