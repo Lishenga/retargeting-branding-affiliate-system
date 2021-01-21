@@ -121,7 +121,7 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.authenticationandauthorization-task-def.outputs.task-definition }}
-          service: authenticationAuth
+          service: authenticationandauthorization
           cluster: retargettingandrebranding
 
       - name: Deploy Amazon affiliatesystem ECS task definition
@@ -132,4 +132,4 @@ jobs:
           cluster: retargettingandrebranding
 
 
-          
+
