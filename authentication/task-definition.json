@@ -123,7 +123,7 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "networkMode": "bridge",
+    "networkMode": "host",
     "cpu": null,
     "revision": 3,
     "status": "ACTIVE",
