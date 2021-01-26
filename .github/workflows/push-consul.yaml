@@ -102,7 +102,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: consul/consul-ingress/task-definition.json
-          container-name: ingress-container
+          container-name: consul-ingress
           image: ${{ steps.build-consul-ingress-image.outputs.image }}
       
       - name: Fill in the consul-server image ID in the Amazon ECS task definition
