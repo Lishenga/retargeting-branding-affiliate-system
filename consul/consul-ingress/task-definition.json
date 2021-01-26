@@ -99,7 +99,7 @@
             "dockerLabels": null,
             "systemControls": null,
             "privileged": null,
-            "name": "consul-ingress"
+            "name": "ingress-container"
         }
     ],
     "placementConstraints": [],
