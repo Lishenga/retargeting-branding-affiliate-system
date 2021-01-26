@@ -114,7 +114,7 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.retargettingandrebranding-task-def.outputs.task-definition }}
-          service: consul-cluster-two-agent-service
+          service: consul-cluster-two-retargettingandrebranding
           cluster: consul-cluster-2
           # wait-for-service-stability: true
       - name: Deploy Amazon authenticationandauthorization ECS task definition
