@@ -17,7 +17,7 @@
             "entryPoint": null,
             "portMappings": [
                 {
-                    "hostPort": 8300,
+                    "hostPort": 8300,    
                     "protocol": "tcp",
                     "containerPort": 8300
                 },
