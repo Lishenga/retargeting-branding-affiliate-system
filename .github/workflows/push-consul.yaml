@@ -1,0 +1,144 @@
+name: Consul Datacenter Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_DEFAULT_REGION: us-east-1
+  AWS_DEFAULT_OUTPUT: json
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  CONSUL_CLUSTER_1_CONTAINER_IMAGE: consul-cluster-1:latest
+  CONSUL_CLUSTER_2_CONTAINER_IMAGE: consul-cluster-2:latest
+  CONSUL_INGRESS_CONTAINER_IMAGE: consul-ingress:latest
+  CONSUL_SERVER_CONTAINER_IMAGE: consul-server:latest
+
+jobs:
+  build-and-push:
+    name: Building and pushing image to AWS ECR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup ECR
+        run: |
+          $( aws ecr get-login --no-include-email )
+
+      - name: Build and tag consul-cluster-1 image
+        id: build-consul-cluster-1-image
+        run: |
+          docker build \
+            -t $CONSUL_CLUSTER_1_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_1_CONTAINER_IMAGE ./consul/consul-cluster-1
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_1_CONTAINER_IMAGE"
+
+      - name: Build and tag consul-cluster-2 image
+        id: build-consul-cluster-2-image
+        run: |
+          docker build \
+            -t $CONSUL_CLUSTER_2_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_2_CONTAINER_IMAGE ./consul/consul-cluster-2
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_2_CONTAINER_IMAGE"
+
+      - name: Build and tag ingress image
+        id: build-consul-ingress-image
+        run: |
+          docker build \
+            -t $CONSUL_INGRESS_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_INGRESS_CONTAINER_IMAGE ./consul/consul-ingress
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_INGRESS_CONTAINER_IMAGE"
+
+      - name: Build and tag consul-server image
+        id: build-consul-server-image
+        run: |
+          docker build \
+            -t $CONSUL_SERVER_CONTAINER_IMAGE \
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_SERVER_CONTAINER_IMAGE ./consul/consul-server
+          echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_SERVER_CONTAINER_IMAGE"
+
+      - name: Push To Amazon ECR
+        run: |
+          cd consul/consul-cluster-1
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_1_CONTAINER_IMAGE
+          cd ..
+          cd consul-cluster-2
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_2_CONTAINER_IMAGE
+          cd ..
+          cd consul-ingress
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_INGRESS_CONTAINER_IMAGE
+          cd ..
+          cd consul-server
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_SERVER_CONTAINER_IMAGE
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: consul/consul-cluster-1/task-definition.json
+          container-name: consul-c1-proxy-agent
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: consul/consul-cluster-2/task-definition.json
+          container-name: consul-agent-2
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: consul/consul-ingress/task-definition.json
+          container-name: consul-ingress
+          image: ${{ steps.build-image.outputs.image }}
+      
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: consul/consul-server/task-definition.json
+          container-name: consul-server
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: consul-cluster-one-agent-service
+          cluster: cluster-cluster-1
+          # wait-for-service-stability: true
+      
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: consul-cluster-two-agent-service
+          cluster: consul-cluster-2
+      
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: consul-ingress-service
+          cluster: consul-ingress-cluster
+          # wait-for-service-stability: true
+      
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: consule-server-service
+          cluster: consul-server-cluster

@@ -1,0 +1,57 @@
+{
+    "bind_addr": "{{GetInterfaceIP \"eth0\"}}",
+    "addresses": {
+        "http": "\($snadress)",
+        "grpc": "\($snadress)"
+    },
+    "data_dir": "/opt/consul",
+    "datacenter": "our_dc",
+    "retry_join": [
+        "172.31.13.201"
+    ],
+    "encrypt": "NAqHX3HUULRuxRPSdzFAQgxpnsXxgks1VeUj4XOP1JE=",
+    "encrypt_verify_incoming": true,
+    "encrypt_verify_outgoing": true,
+    "verify_incoming": false,
+    "verify_outgoing": true,
+    "ca_file": "/opt/consul/configs/consul-agent-ca.pem",
+    "auto_encrypt": {
+        "tls": true
+    },
+    "ports": {
+        "grpc": 8502,
+        "http": 8500,
+        "sidecar_max_port": 21005,
+        "sidecar_min_port": 21000
+    },
+    "enable_central_service_config": true,
+    "services": [
+        {
+            "check": [
+                {
+                    "http": "http://\($snadress):8080",
+                    "id": "affiliatesystem-check",
+                    "interval": "5s",
+                    "method": "GET",
+                    "timeout": "60s"
+                }
+            ],
+            "connect": [
+                {
+                    "sidecar_service": [
+                        {
+                            "proxy": [
+                                {
+                                    "local_service_address": $snadress,
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "id": "affiliatesystem-1",
+            "name": "affiliatesystem",
+            "port": 8080
+        }
+    ]
+}
