@@ -113,22 +113,22 @@ jobs:
           container-name: consul-server
           image: ${{ steps.build-consul-server-image.outputs.image }}
 
-      - name: Deploy Amazon ECS task definition
+      - name: Deploy Amazon ECS consul-cluster-1 task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def-consul-cluster-1.outputs.task-definition }}
           service: consul-cluster-one-agent-service
-          cluster: cluster-cluster-1
+          cluster: consul-cluster-1
           # wait-for-service-stability: true
       
-      - name: Deploy Amazon ECS task definition
+      - name: Deploy Amazon ECS consul-cluster-2 task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def-consul-cluster-2.outputs.task-definition }}
           service: consul-cluster-two-agent-service
           cluster: consul-cluster-2
       
-      - name: Deploy Amazon ECS task definition
+      - name: Deploy Amazon ECS consul-ingress-cluster task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def-consul-ingress.outputs.task-definition }}
@@ -136,7 +136,7 @@ jobs:
           cluster: consul-ingress-cluster
           # wait-for-service-stability: true
       
-      - name: Deploy Amazon ECS task definition
+      - name: Deploy Amazon ECS consul-server-cluster task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def-consul-server.outputs.task-definition }}
