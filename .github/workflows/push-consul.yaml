@@ -81,7 +81,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
+      - name: Fill in the consul-agent-1 image ID in the Amazon ECS task definition
         id: task-def-consul-cluster-1
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
@@ -89,15 +89,15 @@ jobs:
           container-name: consul-c1-proxy-agent
           image: ${{ steps.build-consul-cluster-1-image.outputs.image }}
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
-        id: task-def-consul-agent-2
+      - name: Fill in the consul-agent-2 image ID in the Amazon ECS task definition
+        id: task-def-consul-cluster-2
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: consul/consul-cluster-2/task-definition.json
           container-name: consul-agent-2
           image: ${{ steps.build-consul-cluster-2-image.outputs.image }}
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
+      - name: Fill in the consul-ingress image ID in the Amazon ECS task definition
         id: task-def-consul-ingress
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
@@ -105,7 +105,7 @@ jobs:
           container-name: consul-ingress
           image: ${{ steps.build-consul-ingress-image.outputs.image }}
       
-      - name: Fill in the new image ID in the Amazon ECS task definition
+      - name: Fill in the consul-server image ID in the Amazon ECS task definition
         id: task-def-consul-server
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
