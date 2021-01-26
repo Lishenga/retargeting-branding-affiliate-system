@@ -44,7 +44,7 @@ jobs:
             -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_2_CONTAINER_IMAGE ./consul/consul-cluster-2
           echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONSUL_CLUSTER_2_CONTAINER_IMAGE"
 
-      - name: Build and tag ingress image
+      - name: Build and tag consul ingress image
         id: build-consul-ingress-image
         run: |
           docker build \
@@ -102,7 +102,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: consul/consul-ingress/task-definition.json
-          container-name: consul-ingress
+          container-name: ingress-container
           image: ${{ steps.build-consul-ingress-image.outputs.image }}
       
       - name: Fill in the consul-server image ID in the Amazon ECS task definition
