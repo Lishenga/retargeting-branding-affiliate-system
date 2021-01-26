@@ -121,14 +121,14 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.authenticationandauthorization-task-def.outputs.task-definition }}
-          service: consul-cluster-two-agent-service
+          service: consul-cluster-two-authenticationandauthorization
           cluster: consul-cluster-2
 
       - name: Deploy Amazon affiliatesystem ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.affiliatesystem-task-def.outputs.task-definition }}
-          service: consul-cluster-one-agent-service
+          service: consul-cluster-one-affiliatesystem
           cluster: consul-cluster-1
 
 

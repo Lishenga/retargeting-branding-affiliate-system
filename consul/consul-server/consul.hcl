@@ -7,7 +7,7 @@ ca_file = "/opt/consul/security/consul-agent-ca.pem"
 cert_file = "/opt/consul/security/our_dc-server-consul-0.pem"
 key_file = "/opt/consul/security/our_dc-server-consul-0-key.pem"
 
-encrypt = "NAqHX3HUULRuxRPSdzFAQgxpnsXxgks1VeUj4XOP1JE="
+encrypt = "esSH7N+8EiOB/wfmDhe1JB4mDFQ/OPU7HbKY4hePJAk="
 encrypt_verify_incoming = true
 encrypt_verify_outgoing = true
 
