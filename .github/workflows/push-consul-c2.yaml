@@ -1,4 +1,4 @@
-name: Consul Consul Agent client for cluster 2 docker image to Amazon ECR
+name: Cluster-Two
 
 on:
   push:
