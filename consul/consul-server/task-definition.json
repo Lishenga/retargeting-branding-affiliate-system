@@ -10,7 +10,7 @@
                 "secretOptions": null,
                 "options": {
                     "awslogs-group": "/ecs/consul-ecs-builder",
-                    "awslogs-region": "eu-west-1",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
             },

@@ -10,7 +10,7 @@
                 "secretOptions": null,
                 "options": {
                     "awslogs-group": "/ecs/consul-cluster-1",
-                    "awslogs-region": "eu-west-1",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
             },
@@ -113,7 +113,7 @@
     "compatibilities": [
         "EC2"
     ],
-    "family": "affiliatesystem",
+    "family": "consul-cluster-one-agent",
     "requiresAttributes": [
         {
             "targetId": null,
