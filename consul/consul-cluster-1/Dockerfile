@@ -4,7 +4,7 @@ ARG ENVOY_VERSION=1.14-latest
 FROM envoyproxy/envoy-alpine:v${ENVOY_VERSION}
 
 # Remove env localhost
-ARG CONSUL_VERSION=1.8.0
+ARG CONSUL_VERSION=1.8.0     
 
 RUN apk update && apk add jq --no-cache supervisor 
 

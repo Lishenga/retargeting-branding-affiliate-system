@@ -24,6 +24,6 @@ RUN apk add -u bash curl && \
     -O /tmp/consul.zip && \
     unzip /tmp/consul.zip -d /tmp && \
     mv /tmp/consul /usr/local/bin/consul && \
-    rm -f /tmp/consul.zip
+    rm -f /tmp/consul.zip   
 
 CMD [ "consul", "agent", "-config-file", "/etc/consul.d/consul.hcl" ]
