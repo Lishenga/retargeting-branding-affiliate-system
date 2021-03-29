@@ -1,0 +1,35 @@
+{
+    "bind_addr": "{{GetInterfaceIP \"eth0\"}}",
+    "data_dir": "/etc/consul.d/consul-dir",
+    "datacenter": "our_dc",
+    "enable_central_service_config": true,
+    "services": [
+        {
+            "check": [
+                {
+                    "http": "http://\($snadress):8083/heathcheck",
+                    "id": "retargetingandrebranding-check",
+                    "interval": "5s",
+                    "method": "GET",
+                    "timeout": "60s"
+                }
+            ],
+            "connect": [
+                {
+                    "sidecar_service": [
+                        {
+                            "proxy": [
+                                {
+                                    "local_service_address": $snadress,
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "id": "retargetingandrebranding-1",
+            "name": "retargetingandrebranding",
+            "port": 8083
+        }
+    ]
+}
