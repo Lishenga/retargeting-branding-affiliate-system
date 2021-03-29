@@ -7,7 +7,7 @@
         {
             "check": [
                 {
-                    "http": "\($snadress):8080",
+                    "http": "http://\($snadress):8080",
                     "id": "affiliatesystem-check",
                     "interval": "5s",
                     "method": "GET",
