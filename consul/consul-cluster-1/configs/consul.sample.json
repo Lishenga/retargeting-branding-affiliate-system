@@ -20,7 +20,7 @@
                         {
                             "proxy": [
                                 {
-                                    "local_service_address": $snadress
+                                    "local_service_address": "${{GetInterfaceIP \"eth0\"}}"
                                 }
                             ]
                         }
