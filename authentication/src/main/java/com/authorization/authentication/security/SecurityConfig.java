@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .antMatchers(
         "/swagger-ui.html",
         "/webjars/**",
+        "/heathcheck",
         "/authenticate",
         "/authenticateuser",
         "/registeruser",
@@ -69,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .antMatchers(
         "/swagger-ui.html",
         "/webjars/**",
+        "/heathcheck",
         "/authenticate",
         "/authenticateuser",
         "/registeruser",

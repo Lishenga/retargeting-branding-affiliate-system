@@ -16,7 +16,7 @@ services:
     retargeting_branding-app:
             build: ./retargeting_branding
             container_name: retargeting_branding-app
-            volumes:
+            volumes:  
                 - /data/retargeting_branding-0.0.1-SNAPSHOT
             environment:
                 - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/

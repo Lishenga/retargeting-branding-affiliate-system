@@ -190,4 +190,9 @@ public class AuthenticationController {
 
 		return ResponseEntity.ok(registerUserResponse);
 	}
+
+	@RequestMapping(value = "/heathcheck", method = RequestMethod.GET)
+	public Integer healthCheck() {
+		return 200;
+	}
 }
