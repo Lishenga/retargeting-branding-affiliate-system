@@ -3,7 +3,7 @@ name: Retargeting and Rebranding docker image to Amazon ECR
 on:
   push:
     branches:
-      - main  
+      - main   
 
 env:
   AWS_DEFAULT_REGION: us-east-1
