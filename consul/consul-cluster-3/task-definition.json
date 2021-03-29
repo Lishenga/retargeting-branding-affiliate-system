@@ -9,7 +9,7 @@
                 "logDriver": "awslogs",
                 "secretOptions": null,
                 "options": {
-                    "awslogs-group": "/ecs/consul-cluster-2",
+                    "awslogs-group": "/ecs/consul-cluster-3",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -104,7 +104,7 @@
             "dockerLabels": null,
             "systemControls": null,
             "privileged": null,
-            "name": "consul-c2-proxy-agent"
+            "name": "consul-c3-proxy-agent"
         }
     ],
     "placementConstraints": [],
@@ -113,7 +113,7 @@
     "compatibilities": [
         "EC2"
     ],
-    "family": "consul-cluster-two-agent",
+    "family": "consul-cluster-three-agent",
     "requiresAttributes": [
         {
             "targetId": null,

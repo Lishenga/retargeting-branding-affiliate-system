@@ -18,7 +18,7 @@ RUN mkdir -p /opt/consul  \
 
 ADD configs /etc/consul.d/configs   
 
-ADD scripts /opt/consul/scripts
+ADD scripts /opt/consul/scripts  
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf   
 
