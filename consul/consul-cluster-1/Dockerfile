@@ -16,7 +16,7 @@ RUN mkdir -p /opt/consul  \
     && chmod -R 777 /etc/consul.d \
     && chmod -R 777 /var/logs
 
-ADD configs /opt/consul/configs   
+ADD configs /etc/consul.d/configs   
 
 ADD scripts /opt/consul/scripts
 

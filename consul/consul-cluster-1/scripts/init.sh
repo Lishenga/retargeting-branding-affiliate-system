@@ -14,4 +14,4 @@
 
 # Initialize the consul agent
 # envoy -c /etc/envoy/envoy.yaml
-consul agent -retry-join "provider=aws tag_key=Name tag_value=ECS Instance - EC2ContainerService-consul-server" -config-file=/etc/consul.d/consul.json -retry-interval=5s
+consul agent -retry-join "provider=aws tag_key=Name tag_value=ECS Instance - EC2ContainerService-consul-server" -config-file=/etc/consul.d/configs/consul.sample.json -retry-interval=5s
