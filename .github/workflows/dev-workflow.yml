@@ -114,21 +114,21 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.retargettingandrebranding-task-def.outputs.task-definition }}
-          service: consul-cluster-two-retargettingandrebranding
+          service: retargettingandrebranding
           cluster: consul-cluster-threee
           # wait-for-service-stability: true
       - name: Deploy Amazon authenticationandauthorization ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.authenticationandauthorization-task-def.outputs.task-definition }}
-          service: consul-cluster-two-authenticationandauthorization
+          service: authenticationandauthorization
           cluster: consul-cluster-two
 
       - name: Deploy Amazon affiliatesystem ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.affiliatesystem-task-def.outputs.task-definition }}
-          service: consul-cluster-one-affiliatesystem
+          service: affiliatesystem
           cluster: consul-cluster-one
 
 
