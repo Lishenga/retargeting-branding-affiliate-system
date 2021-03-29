@@ -20,7 +20,7 @@ ADD configs /opt/consul/configs
 
 ADD scripts /opt/consul/scripts
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf   
 
 #try
 EXPOSE 21000-21005
