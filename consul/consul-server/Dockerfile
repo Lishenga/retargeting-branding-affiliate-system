@@ -3,7 +3,7 @@ ARG ENVOY_VERSION=1.14-latest
 
 FROM envoyproxy/envoy-alpine:v${ENVOY_VERSION}
 
-ARG CONSUL_VERSION=1.8.0
+ARG CONSUL_VERSION=1.8.0     
 
 RUN apk update && apk add jq --no-cache supervisor    
 
@@ -24,6 +24,6 @@ RUN apk add -u bash curl && \
     -O /tmp/consul.zip && \
     unzip /tmp/consul.zip -d /tmp && \
     mv /tmp/consul /usr/local/bin/consul && \
-    rm -f /tmp/consul.zip   
+    rm -f /tmp/consul.zip
 
 CMD [ "consul", "agent", "-config-file", "/etc/consul.d/consul.hcl" ]

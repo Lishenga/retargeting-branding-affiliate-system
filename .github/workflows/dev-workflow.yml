@@ -18,7 +18,7 @@ env:
 jobs:
   build-and-push:
     name: Building and pushing image to AWS ECR
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest     
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -99,7 +99,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ./authentication/task-definition.json
-          container-name: authenticationAuthorization
+          container-name: authenticationandauthorization
           image: ${{ steps.build-authenticationandauthorization-image.outputs.image }}
 
       - name: Fill in the new affiliatesystem image ID in the Amazon ECS task definition
