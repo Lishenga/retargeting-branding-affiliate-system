@@ -44,10 +44,10 @@ system-config:
         secretKey: b4447686222e17b409e27ac0c31ce7ad
         
 
-eureka:
-    client:
-        service-url:
-            defaultZone: http://localhost:8761/eureka/
+# eureka:
+#     client:
+#         service-url:
+#             defaultZone: http://localhost:8761/eureka/
 # eureka.instance.preferIpAddress=true 
 # eureka.instance.hostname = authentication-service
 

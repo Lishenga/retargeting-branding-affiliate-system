@@ -13,8 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+// import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.PatternTopic;
@@ -246,11 +245,11 @@ public class ApplicationConfig {
         return new RedisService();
     }
 
-    @LoadBalanced
-	@Bean
-	public WebClient.Builder getWebClient() {
-		return WebClient.builder();
-    }
+    // @LoadBalanced
+	// @Bean
+	// public WebClient.Builder getWebClient() {
+	// 	return WebClient.builder();
+    // }
     
     @Bean
 	public OpenAPI customOpenAPI() {
