@@ -23,13 +23,13 @@ ADD scripts /opt/consul/scripts
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf   
 
 #try
-EXPOSE 21000-21005    
+EXPOSE 21000-21005         
 
 RUN chmod +x /opt/consul/scripts/init.sh
 
 RUN chmod +x /opt/consul/scripts/registerretargetingandrebranding.sh
 
-RUN apk add -u bash curl && \
+RUN apk add -u bash curl && \   
     wget https://releases.hashicorp.com/consul/"${CONSUL_VERSION}"/consul_"${CONSUL_VERSION}"_linux_amd64.zip \
     -O /tmp/consul.zip && \
     unzip /tmp/consul.zip -d /tmp && \

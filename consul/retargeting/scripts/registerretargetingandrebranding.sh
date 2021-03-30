@@ -11,7 +11,7 @@ OUR_SERVER_ADDRESS=$(ip addr show eth0 | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[
 
 # echo $JSON_STRING >> /opt/consul/configs/service_"$SERVICE"_consul.json
 
-consul config write -http-addr="$OUR_SERVER_ADDRESS:8500" /opt/consul/configs/config.retargetingandrebranding.hcl
+consul config write -http-addr="$OUR_SERVER_ADDRESS:8500" /opt/consul/configs/config.retargetingandrebranding.hcl  
 
 consul connect envoy -http-addr="$OUR_SERVER_ADDRESS:8500" -grpc-addr="$OUR_SERVER_ADDRESS:8502" -sidecar-for retargetingandrebranding-1
 
