@@ -1,0 +1,57 @@
+{
+    "bind_addr": "{{GetInterfaceIP \"eth0\"}}",
+    "data_dir": "/etc/consul.d/consul-dir",
+    "datacenter": "our_dc",
+    "enable_central_service_config": true,
+    "services": [
+        {
+            "check": [
+                {
+                    "http": "http://\($snadress):8081/heathcheck",
+                    "id": "authenticationandauthorization-check",    
+                    "interval": "5s",
+                    "method": "GET",
+                    "timeout": "60s"
+                }
+            ],
+            "connect": [
+                {
+                    "sidecar_service": [
+                        {
+                            "proxy": [
+                                {
+                                    "local_service_address": $snadress,
+                                    "upstreams": [
+                                        {
+                                            "destination_type": "service",
+                                            "destination_name": "retargetingandrebranding",
+                                            "datacenter": "our_dc",
+                                            "local_bind_address": $snadress,
+                                            "local_bind_port": 5000,
+                                            "config": {
+                                                "protocol": "http"
+                                            }
+                                        },
+                                        {
+                                            "destination_type": "service",
+                                            "destination_name": "affiliatesystem",
+                                            "datacenter": "our_dc",
+                                            "local_bind_address": $snadress,
+                                            "local_bind_port": 6000,
+                                            "config": {
+                                                "protocol": "http"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "id": "authenticationandauthorization-1",
+            "name": "authenticationandauthorization",
+            "port": 8081
+        }
+    ]
+}

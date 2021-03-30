@@ -1,9 +1,9 @@
-name: Cluster-Two
+name: Cluster-Agent-Authentication
 
 on:
   push:
     paths:
-      - consul/consul-cluster-2/**
+      - consul/authentication/**
     branches:
       -  main
 
@@ -39,7 +39,7 @@ jobs:
         run: |
           docker build \
             -t $CONTAINER_IMAGE \
-            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./consul/consul-cluster-2
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./consul/authentication
           echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE"
 
       - name: Push To Amazon ECR
@@ -50,7 +50,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: consul/consul-cluster-2/task-definition.json
+          task-definition: consul/authentication/task-definition.json
           container-name: consul-c2-proxy-agent
           image: ${{ steps.build-image.outputs.image }}
 

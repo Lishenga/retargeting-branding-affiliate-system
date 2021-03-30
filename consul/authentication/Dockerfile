@@ -25,11 +25,9 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 #try
 EXPOSE 21000-21005    
 
-RUN chmod +x /opt/consul/scripts/init.sh     
+RUN chmod +x /opt/consul/scripts/init.sh   
 
-# RUN chmod +x /opt/consul/scripts/registerusers.sh
-
-# RUN chmod +x /opt/consul/scripts/registeractivities.sh
+RUN chmod +x /opt/consul/scripts/registerauthenticationandauthorization.sh
 
 RUN apk add -u bash curl && \
     wget https://releases.hashicorp.com/consul/"${CONSUL_VERSION}"/consul_"${CONSUL_VERSION}"_linux_amd64.zip \

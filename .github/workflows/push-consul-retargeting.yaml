@@ -1,9 +1,9 @@
-name: Cluster-Three
+name: Cluster-Agent-Retargeting
 
 on:
   push:
     paths:
-      - consul/consul-cluster-3/**
+      - consul/retargeting/**
     branches:
       - main
 
@@ -39,7 +39,7 @@ jobs:
         run: |
           docker build \
             -t $CONTAINER_IMAGE \
-            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./consul/consul-cluster-3
+            -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./consul/retargeting
           echo "::set-output name=image::$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE"
 
       - name: Push To Amazon ECR
@@ -50,7 +50,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: consul/consul-cluster-3/task-definition.json
+          task-definition: consul/retargeting/task-definition.json
           container-name: consul-c3-proxy-agent
           image: ${{ steps.build-image.outputs.image }}
 

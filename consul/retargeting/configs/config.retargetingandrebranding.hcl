@@ -1,3 +1,3 @@
 Kind      = "service-defaults"
-Name      = "activities"
+Name      = "retargetingandrebranding"
 Protocol  = "http"
