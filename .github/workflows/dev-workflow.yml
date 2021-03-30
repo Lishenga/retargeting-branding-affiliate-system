@@ -115,7 +115,7 @@ jobs:
         with:
           task-definition: ${{ steps.retargettingandrebranding-task-def.outputs.task-definition }}
           service: retargettingandrebranding
-          cluster: consul-cluster-threee   
+          cluster: consul-cluster-three   
           # wait-for-service-stability: true
       - name: Deploy Amazon authenticationandauthorization ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
