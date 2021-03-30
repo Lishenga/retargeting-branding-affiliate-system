@@ -3,6 +3,12 @@
     "data_dir": "/etc/consul.d/consul-dir",
     "datacenter": "our_dc",
     "enable_central_service_config": true,
+    "ports": {
+        "grpc": 8502,
+        "http": 8500,
+        "sidecar_max_port": 8700,
+        "sidecar_min_port": 8800
+    },
     "services": [
         {
             "check": [
