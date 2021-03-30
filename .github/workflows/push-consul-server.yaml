@@ -1,7 +1,7 @@
 name: Consul Server docker image to Amazon ECR
 
 on:
-  push:
+  push:  
     paths:
       - consul/consul-server/**
     branches:

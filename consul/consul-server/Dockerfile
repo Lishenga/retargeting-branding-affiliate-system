@@ -16,7 +16,7 @@ RUN mkdir -p /opt/consul  \
     && chmod -R 777 /var/logs
 
 COPY consul.hcl /etc/consul.d/consul.hcl                       
-
+     
 # ADD security /opt/consul/security
 
 RUN apk add -u bash curl && \
