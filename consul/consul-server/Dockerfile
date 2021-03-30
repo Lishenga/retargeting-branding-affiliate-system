@@ -5,7 +5,7 @@ FROM envoyproxy/envoy-alpine:v${ENVOY_VERSION}
 
 ARG CONSUL_VERSION=1.8.0
 
-RUN apk update && apk add jq --no-cache supervisor 
+RUN apk update && apk add jq --no-cache supervisor    
 
 RUN mkdir -p /opt/consul  \
     && mkdir -p /etc/consul.d \
@@ -15,7 +15,7 @@ RUN mkdir -p /opt/consul  \
     && chmod -R 777 /etc/consul.d \
     && chmod -R 777 /var/logs
 
-COPY consul.hcl /etc/consul.d/consul.hcl               
+COPY consul.hcl /etc/consul.d/consul.hcl                       
 
 # ADD security /opt/consul/security
 

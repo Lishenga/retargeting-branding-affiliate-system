@@ -25,7 +25,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 #try
 EXPOSE 21000-21005    
 
-RUN chmod +x /opt/consul/scripts/init.sh
+RUN chmod +x /opt/consul/scripts/init.sh     
 
 # RUN chmod +x /opt/consul/scripts/registerusers.sh
 
@@ -36,6 +36,6 @@ RUN apk add -u bash curl && \
     -O /tmp/consul.zip && \
     unzip /tmp/consul.zip -d /tmp && \
     mv /tmp/consul /usr/local/bin/consul && \
-    rm -f /tmp/consul.zip
+    rm -f /tmp/consul.zip   
 
 CMD [ "/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

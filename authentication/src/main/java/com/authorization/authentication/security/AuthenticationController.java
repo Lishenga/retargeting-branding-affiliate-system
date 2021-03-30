@@ -173,7 +173,7 @@ public class AuthenticationController {
 		emailRequest.setFrom(emailSender);
 		emailRequest.setSubject("Thank you for registering with us");
 		
-		emailService.sendEmail(emailRequest);
+		emailService.sendEmail(emailRequest);     
 
 		Clients client = clientsRepository.findByClientSecret(clientSecret);
 

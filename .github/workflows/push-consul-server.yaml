@@ -18,7 +18,7 @@ env:
 jobs:
   build-and-push:
     name: Building and pushing image to AWS ECR
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest          
     steps:
       - name: Checkout
         uses: actions/checkout@master

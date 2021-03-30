@@ -8,7 +8,7 @@
             "check": [
                 {
                     "http": "http://\($snadress):8081/heathcheck",
-                    "id": "authenticationandauthorization-check",
+                    "id": "authenticationandauthorization-check",    
                     "interval": "5s",
                     "method": "GET",
                     "timeout": "60s"
