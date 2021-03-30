@@ -6,8 +6,8 @@
     "ports": {
         "grpc": 8502,
         "http": 8500,
-        "sidecar_max_port": 8700,
-        "sidecar_min_port": 8800
+        "sidecar_max_port": 8800,
+        "sidecar_min_port": 8700
     },
     "services": [
         {
