@@ -12,7 +12,7 @@ env:
   RETARGETING_REBRANDING_CONTAINER_IMAGE: retargettingandrebranding-servce  
   AUTHENTICATION_AUTHORIZATION_CONTAINER_IMAGE: authenticationandauthorization-service 
   AFFILIATE_SYSTEM_CONTAINER_IMAGE: affiliatesystem-service
-  S3_BUCKET: ${{ secrets.DEV_CODEDEPLOY_S3_BUCKET }}
+  S3_BUCKET: ${{ secrets.S3_BUCKET }}
   APPLICATION_NAME: ${{ secrets.APPLICATION_NAME }} 
   DEPLOYMENT_GROUP: ${{ secrets.DEV_DEPLOYMENT_GROUP }}
   DOCKER_USERNAME: lishenga
