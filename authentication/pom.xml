@@ -169,7 +169,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>lishenga/retargeting-branding-${project.artifactId}:${project.version}</name>
+						<name>lishenga/retargeting-branding-${project.artifactId}</name>
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>

@@ -142,7 +142,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>retargeting-branding-${project.artifactId}:${project.version}</name>
+						<name>retargeting-branding-${project.artifactId}</name>
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
