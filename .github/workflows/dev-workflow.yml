@@ -14,7 +14,7 @@ env:
   AFFILIATE_SYSTEM_CONTAINER_IMAGE: affiliatesystem-service
   S3_BUCKET: ${{ secrets.S3_BUCKET }}
   APPLICATION_NAME: ${{ secrets.APPLICATION_NAME }} 
-  DEPLOYMENT_GROUP: ${{ secrets.DEV_DEPLOYMENT_GROUP }}
+  DEPLOYMENT_GROUP: ${{ secrets.DEPLOYMENT_GROUP }}
   DOCKER_USERNAME: lishenga
 
 jobs:
