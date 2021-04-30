@@ -1,10 +1,25 @@
+# version: '3'
+
+# services:
+#   private:
+#     image: ghcr.io/ovesorg/devices-service:dev
+#     container_name: graphql-devices-service
+#     volumes:
+#       - '.:/app'
+#       - '/app/node_modules'
+#     ports:
+#       - 3003:3000
+#     environment:
+#       - CHOKIDAR_USEPOLLING=true  
+
+
 
 version: '3'
 
 services:
 
     authentication-app:
-        build: ./authentication
+        image: ghcr.io/lishenga/retargeting-branding-authentication:0.0.1-SNAPSHOT:dev
         container_name: authentication-app
         volumes:
             - /data/authentication-0.0.1-SNAPSHOT
@@ -14,14 +29,24 @@ services:
             - "8081"
 
     retargeting_branding-app:
-            build: ./retargeting_branding
-            container_name: retargeting_branding-app
-            volumes:  
-                - /data/retargeting_branding-0.0.1-SNAPSHOT
-            environment:
-                - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
-            expose:
-                - "8083"
+        image: ghcr.io/lishenga/retargeting_branding:0.0.1-SNAPSHOT:dev
+        container_name: retargeting_branding-app
+        volumes:  
+            - /data/retargeting_branding-0.0.1-SNAPSHOT
+        environment:
+            - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
+        expose:
+            - "8083"
+
+    affiliate-app:
+        image: ghcr.io/lishenga/retargeting-branding-affiliate:0.0.1-SNAPSHOT:dev
+        container_name: affiliate-app
+        volumes:  
+            - /data/retargeting-branding-affiliate:0.0.1-SNAPSHOT
+        environment:
+            - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
+        expose:
+            - "8080"
 
 
     nginx-auth:
@@ -41,6 +66,15 @@ services:
             - "83:83"
         depends_on:
             - retargeting_branding-app
+
+    nginx-affiliate:
+        build: ./nginx/affiliate
+        volumes:
+            - /data/retargeting-branding-affiliate-0.0.1-SNAPSHOT
+        ports:
+            - "80:80"
+        depends_on:
+            - affiliate-app
 
 
 #             sudo apt-get update
