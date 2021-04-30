@@ -37,13 +37,6 @@ jobs:
           mvn spring-boot:build-image -DskipTests
           cd ..
 
-  build-push-image-and-codedeploy:
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-    needs: build
-    steps:
       - uses: actions/checkout@v2
 
       - name: Log into registry
