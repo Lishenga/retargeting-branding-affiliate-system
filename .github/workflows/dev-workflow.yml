@@ -54,7 +54,7 @@ jobs:
         run: |
         
           cd affiliate
-          AFFILIATE_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting-branding-affiliate:0.0.1-SNAPSHOT
+          AFFILIATE_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting-branding-affiliate
 
           # Change all uppercase to lowercase
           AFFILIATE_IMAGE_ID=$(echo $AFFILIATE_IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -70,7 +70,7 @@ jobs:
           cd ..
 
           cd authentication
-          AUTHENTICATION_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting-branding-authentication:0.0.1-SNAPSHOT
+          AUTHENTICATION_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting-branding-authentication
 
           # Change all uppercase to lowercase
           AUTHENTICATION_IMAGE_ID=$(echo $AUTHENTICATION_IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -86,7 +86,7 @@ jobs:
           cd ..
 
           cd retargeting_branding
-          RETARGETING_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting_branding:0.0.1-SNAPSHOT
+          RETARGETING_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting_branding
 
           # Change all uppercase to lowercase
           RETARGETING_IMAGE_ID=$(echo $RETARGETING_IMAGE_ID | tr '[A-Z]' '[a-z]')
