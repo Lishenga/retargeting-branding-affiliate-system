@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+sudo chown -R ubuntu:ubuntu /home/ubuntu
+
 cd /home/ubuntu/retargeting-branding-affiliate-system
 export DOCKER_CLIENT_TIMEOUT=300
 export COMPOSE_HTTP_TIMEOUT=300    
