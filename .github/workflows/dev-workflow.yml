@@ -124,8 +124,6 @@ jobs:
           FILE_EXISTS_BEHAVIOR: "OVERWRITE"
               
 
-
-
 # name: Retargeting and Rebranding docker image to Amazon ECR  
 
 # on:
