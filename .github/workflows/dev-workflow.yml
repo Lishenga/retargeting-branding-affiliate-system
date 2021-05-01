@@ -62,7 +62,7 @@ jobs:
           docker tag lishenga/retargeting-branding-affiliate:0.0.1-SNAPSHOT $AFFILIATE_IMAGE_ID:dev
           docker push $AFFILIATE_IMAGE_ID:dev
           cd ..
-
+                
           cd authentication
           AUTHENTICATION_IMAGE_ID=ghcr.io/${{ github.repository_owner }}/retargeting-branding-authentication
 
@@ -74,7 +74,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
-
+  
           docker tag lishenga/retargeting-branding-authentication:0.0.1-SNAPSHOT $AUTHENTICATION_IMAGE_ID:dev
           docker push $AUTHENTICATION_IMAGE_ID:dev
           cd ..
