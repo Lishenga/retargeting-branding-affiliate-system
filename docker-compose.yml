@@ -19,7 +19,7 @@ version: '3'
 services:
 
     authentication-app:
-        image: ghcr.io/lishenga/retargeting-branding-authentication
+        image: ghcr.io/lishenga/retargeting-branding-authentication:dev
         container_name: authentication-app
         volumes:
             - /data/authentication-0.0.1-SNAPSHOT
@@ -29,7 +29,7 @@ services:
             - "8081"
 
     retargeting_branding-app:
-        image: ghcr.io/lishenga/retargeting_branding
+        image: ghcr.io/lishenga/retargeting_branding:dev
         container_name: retargeting_branding-app
         volumes:  
             - /data/retargeting_branding-0.0.1-SNAPSHOT
@@ -39,7 +39,7 @@ services:
             - "8083"
 
     affiliate-app:
-        image: ghcr.io/lishenga/retargeting-branding-affiliate
+        image: ghcr.io/lishenga/retargeting-branding-affiliate:dev
         container_name: affiliate-app
         volumes:  
             - /data/retargeting-branding-affiliate:0.0.1-SNAPSHOT
@@ -54,7 +54,7 @@ services:
         volumes:
             - /data/authentication-0.0.1-SNAPSHOT
         ports:
-            - "80:80"
+            - "81:81"
         depends_on:
             - authentication-app
 
