@@ -8,7 +8,6 @@ services:
         volumes:
             - /data/retargeting-branding-authentication
         environment:
-            - JAVA_OPTIONS="-Xms100M -Xmx100M"
             - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
         expose:
             - "8081"
@@ -19,7 +18,6 @@ services:
         volumes:  
             - /data/retargeting_branding
         environment:
-            - JAVA_OPTIONS="-Xms100M -Xmx100M"
             - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
         expose:
             - "8083"
@@ -30,7 +28,6 @@ services:
         volumes:  
             - /data/retargeting-branding-affiliate
         environment:
-            - JAVA_OPTIONS="-Xms100M -Xmx100M"
             - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
         expose:
             - "8080"
