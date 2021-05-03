@@ -94,7 +94,7 @@ jobs:
           docker push $RETARGETING_IMAGE_ID:dev
           cd ..
 
-          zip -r build.zip appspec.yml scripts docker-compose.yml nginx
+          zip -r build.zip appspec.yml scripts docker-compose.yml
 
       - name: Upload
         id: upload

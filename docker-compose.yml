@@ -7,52 +7,25 @@ services:
         container_name: authentication-app
         volumes:
             - /data/retargeting-branding-authentication
-        expose:
-            - "8081"
+        ports:
+            - "81:8081"
 
     retargeting_branding-app:
         image: ghcr.io/lishenga/retargeting_branding:dev
         container_name: retargeting_branding-app
         volumes:  
             - /data/retargeting_branding
-        expose:
-            - "8083"
+        ports:
+            - "83:8083"
 
     affiliate-app:
         image: ghcr.io/lishenga/retargeting-branding-affiliate:dev
         container_name: affiliate-app
         volumes:  
             - /data/retargeting-branding-affiliate
-        expose:
-            - "8080"
-
-
-    nginx-auth:
-        build: ./nginx/authentication
-        volumes:
-            - /data/retargeting-branding-authentication
         ports:
-            - "81:81"
-        depends_on:
-            - authentication-app
-
-    nginx-retarget:
-        build: ./nginx/retargeting_and_branding
-        volumes:
-            - /data/retargeting_branding
-        ports:
-            - "83:83"
-        depends_on:
-            - retargeting_branding-app
-
-    nginx-affiliate:
-        build: ./nginx/affiliate
-        volumes:
-            - /data/retargeting-branding-affiliate
-        ports:
-            - "80:80"
-        depends_on:
-            - affiliate-app
+            - "80:8080"
+        
     redis:
         container_name: redis
         image: redis
@@ -62,6 +35,35 @@ services:
             - ../data/redis:/data
         entrypoint: redis-server --appendonly yes
         restart: always
+
+
+    # nginx-auth:
+    #     build: ./nginx/authentication
+    #     volumes:
+    #         - /data/retargeting-branding-authentication
+    #     ports:
+    #         - "81:81"
+    #     depends_on:
+    #         - authentication-app
+
+    # nginx-retarget:
+    #     build: ./nginx/retargeting_and_branding
+    #     volumes:
+    #         - /data/retargeting_branding
+    #     ports:
+    #         - "83:83"
+    #     depends_on:
+    #         - retargeting_branding-app
+
+    # nginx-affiliate:
+    #     build: ./nginx/affiliate
+    #     volumes:
+    #         - /data/retargeting-branding-affiliate
+    #     ports:
+    #         - "80:80"
+    #     depends_on:
+    #         - affiliate-app
+    
 
 
 #             sudo apt-get update
