@@ -38,6 +38,7 @@ eureka:
             defaultZone: 'http://3.235.22.176:8761/eureka'
     instance:
         hostname: retargeting-branding-service
+        prefer-ip-address: true
 # server.servlet.context-path=/auth
 
 logging:
