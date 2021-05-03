@@ -26,6 +26,7 @@ spring:
     cloud:
         config:
             profile: 'dev'
+            uri: 'http://3.235.22.176:8888'
 # server.servlet.context-path=/auth
 
 logging:

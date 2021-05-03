@@ -3,32 +3,26 @@ version: '3'
 services:
 
     authentication-app:
-        image: lishenga/retargeting-branding-authentication:0.0.1-SNAPSHOT
+        image: ghcr.io/lishenga/retargeting-branding-authentication:0.0.1-SNAPSHOT
         container_name: authentication-app
         volumes:
             - /data/retargeting-branding-authentication
-        environment:
-            - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
         expose:
             - "8081"
 
     retargeting_branding-app:
-        image: lishenga/retargeting_branding:0.0.1-SNAPSHOT
+        image: ghcr.io/lishenga/retargeting_branding:0.0.1-SNAPSHOT
         container_name: retargeting_branding-app
         volumes:  
             - /data/retargeting_branding
-        environment:
-            - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
         expose:
             - "8083"
 
     affiliate-app:
-        image: lishenga/retargeting-branding-affiliate:0.0.1-SNAPSHOT
+        image: ghcr.io/lishenga/retargeting-branding-affiliate:0.0.1-SNAPSHOT
         container_name: affiliate-app
         volumes:  
             - /data/retargeting-branding-affiliate
-        environment:
-            - eureka.client.service-url.defaultZone=http://192.248.159.103:8761/eureka/
         expose:
             - "8080"
 
