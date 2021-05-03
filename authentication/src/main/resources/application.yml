@@ -40,9 +40,9 @@ eureka:
         prefer-same-zone-eureka: false
     instance:
         prefer-ip-address: true
-        hostname: ${server.address}
-        ip-address: ${server.address}
-        instance-id: ${server.address}:${spring.application.name}:${server.port}
+        hostname: '3.238.245.253'
+        ip-address: 'http://3.238.245.253'
+        instance-id: 'http://3.238.245.253:authentication-service:81'
 
 # server.servlet.context-path=/auth
 
