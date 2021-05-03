@@ -27,9 +27,9 @@ spring:
         config:
             profile: 'dev'
             uri: 'http://3.235.22.176:8888'
-    redis:
-        url: 'redis://3.238.245.253'
-        port: 6379
+    # redis:
+    #     url: 'redis://3.238.245.253'
+    #     port: 6379
     zipkin:
         base-url: 'http://3.235.22.176:9411'
 eureka:
