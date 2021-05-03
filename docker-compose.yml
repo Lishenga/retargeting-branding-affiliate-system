@@ -53,6 +53,15 @@ services:
             - "80:80"
         depends_on:
             - affiliate-app
+    redis:
+        container_name: redis
+        image: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - ../data/redis:/data
+        entrypoint: redis-server --appendonly yes
+        restart: always
 
 
 #             sudo apt-get update
