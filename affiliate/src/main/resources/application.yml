@@ -40,8 +40,8 @@ eureka:
     instance:
         prefer-ip-address: true
         hostname: '3.238.245.253'
-        ip-address: 'http://3.238.245.253'
-        instance-id: 'http://3.238.245.253:affiliate-service:80'
+        ip-address: '3.238.245.253'
+        instance-id: '3.238.245.253:affiliate-service:80'
 # server.servlet.context-path=/auth
 
 logging:
