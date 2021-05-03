@@ -36,9 +36,12 @@ eureka:
     client:
         serviceUrl:
             defaultZone: 'http://3.235.22.176:8761/eureka'
+        prefer-same-zone-eureka: false
     instance:
-        hostname: affiliate-service
         prefer-ip-address: true
+        hostname: ${server.address}
+        ip-address: ${server.address}
+        instance-id: ${server.address}:${spring.application.name}:${server.port}
 # server.servlet.context-path=/auth
 
 logging:
