@@ -20,11 +20,10 @@ import com.authorization.authentication.services.AccessLogsService;
 import com.authorization.authentication.services.AddressService;
 import com.authorization.authentication.services.TokenService;
 import com.authorization.authentication.utils.JwtUtil;
+import com.authorization.authentication.utils.RemoteCallsProxy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -36,9 +35,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
-
-import reactor.core.publisher.Mono;
 
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
@@ -72,10 +68,10 @@ public class AuthenticationController {
 	private JwtUtil jwtTokenUtil;
 
 	@Autowired
-	private WebClient.Builder webClientBuilder;
+	private UsersRepository usersRepository;
 
 	@Autowired
-	private UsersRepository usersRepository;
+    private RemoteCallsProxy proxy;
 
 	@Autowired
 	private ClientsRepository clientsRepository;
@@ -181,9 +177,8 @@ public class AuthenticationController {
 
 		accessLogsService.saveAccessLogs(createAccessLogsRequest);
 
-		webClientBuilder.build().post().uri("http://retargeting-branding-service/registeruser").header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-        .body(Mono.just(registerUserRequest), RegisterUserRequest.class)
-		.retrieve().bodyToMono(RegisterUserResponse.class).block();
+		RegisterUserResponse res = proxy.registerUser(registerUserRequest);
+		System.out.println(res);
 		
 		registerUserResponse.setMessage("Success");
 		registerUserResponse.setStatus(200);

@@ -1,19 +1,19 @@
 {
     "configurations": [
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - AffiliateApplication",
-            "request": "launch",
-            "mainClass": "com.payments_messaging.affiliate.AffiliateApplication",
-            "projectName": "affiliate"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - RetargetingBrandingApplication",
-            "request": "launch",
-            "mainClass": "com.retargeting_branding.RetargetingBrandingApplication",
-            "projectName": "retargeting_branding"
-        },
+        // {
+        //     "type": "java",
+        //     "name": "CodeLens (Launch) - AffiliateApplication",
+        //     "request": "launch",
+        //     "mainClass": "com.payments_messaging.affiliate.AffiliateApplication",
+        //     "projectName": "affiliate"
+        // },
+        // {
+        //     "type": "java",
+        //     "name": "CodeLens (Launch) - RetargetingBrandingApplication",
+        //     "request": "launch",
+        //     "mainClass": "com.retargeting_branding.RetargetingBrandingApplication",
+        //     "projectName": "retargeting_branding"
+        // },
         {
             "type": "java",
             "name": "Spring Boot-AuthenticationApplication<authentication>",

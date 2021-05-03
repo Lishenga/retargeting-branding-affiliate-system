@@ -1,28 +1,28 @@
 server:
-    port: 8080
+    port: 8083
     servlet:
-        context-path: "/affiliate"
+        context-path: "/retargetingandbranding"
 spring:
     application: 
-        name: affiliate-service
+        name: retargeting-branding-service
     datasource:
-        url: jdbc:mysql://54.237.25.133:3306/affiliate_system
+        url: jdbc:mysql://54.237.25.133:3306/retargetting_and_branding
         username: accessing
         password: FD;.x@!G&5es?:<M
-        # url: jdbc:mysql://localhost:3306/authentication_and_authorization?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        # url: jdbc:mysql://localhost:3306/retargetting_and_branding?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
         # username: root
         # password: p1r1chon1
         hikari:
             connectionTimeout: 20000
-            maxLifetime: 400000
+            maxLifetime: 27800
     jpa:
         hibernate:
             ddl-auto: update
-    config: 
-        import: 'optional:configserver:http://localhost:8888'
     sleuth:
         sampler:
             probability: 1.0
+    config:
+        import: 'optional:configserver:http://localhost:8888'
     cloud:
         config:
             profile: 'dev'
@@ -43,6 +43,10 @@ springdoc:
 
 ## System Configs
 system-config:
+    server:
+        api: 'https://95.179.198.198:83/'
+    promocode:
+        generator: 5r:YgER_D
     token:
         generator: 5r'YgER_D;*n$=op&8GZ&$;0g#cx|hVhg;M=h{V>)LH$$ejSV+uDS3)"lQRt/?C
     api:
@@ -53,6 +57,11 @@ system-config:
         apiKey: 54d1004f4e3555777158b4b0cf1d51a4
         secretKey: b4447686222e17b409e27ac0c31ce7ad
         
+
+# eureka:
+#     client:
+#         service-url:
+#             defaultZone: http://localhost:8761/eureka/
 # eureka.instance.preferIpAddress=true 
 # eureka.instance.hostname = authentication-service
 
